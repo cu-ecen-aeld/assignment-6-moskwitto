@@ -8,7 +8,7 @@ SRC_URI = "git://git@github.com/cu-ecen-aeld/assignments-3-and-later-moskwitto.g
 
 PV = "1.0+git${SRCPV}"
 # TODO: set to reference a specific commit hash in your assignment repo
-SRCREV = "2fb39cd975c850ea5827a7658ebd02c97e0f8e15"
+SRCREV = "71254893bbdcab8c73e987ecfbf466fddc745c485"
 
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
