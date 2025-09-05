@@ -8,7 +8,7 @@ SRC_URI = "git://git@github.com/cu-ecen-aeld/assignments-3-and-later-moskwitto.g
 
 PV = "1.0+git${SRCPV}"
 # TODO: set to reference a specific commit hash in your assignment repo
-SRCREV = "eb3326d16cc1fabcb45c11e5a645f738a75ac52c"
+SRCREV = "495dbb0e684da394b6af746e16f98cdd30fd4d2d"
 
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
@@ -20,7 +20,7 @@ S = "${WORKDIR}/git/server"
 # TODO: Add the aesdsocket application and any other files you need to install
 # See https://git.yoctoproject.org/poky/plain/meta/conf/bitbake.conf?h=kirkstone
 FILES:${PN} += "${bindir}/aesdsocket"
-FILES:${PN} += "${sysconfdir}/rcS.d/S99aesdsocket"
+FILES:${PN} += "${sysconfdir}/rcS.d/aesdsocket-start-stop"
 
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
