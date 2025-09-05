@@ -8,7 +8,7 @@ SRC_URI = "git://git@github.com/cu-ecen-aeld/assignments-3-and-later-moskwitto.g
 
 PV = "1.0+git${SRCPV}"
 # TODO: set to reference a specific commit hash in your assignment repo
-SRCREV = "96bc8cb892e27e73c4d921378d5e20f5ba9a3dbd"
+SRCREV = "eb3326d16cc1fabcb45c11e5a645f738a75ac52c"
 
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
@@ -45,8 +45,7 @@ do_install () {
 	# and
 	# https://docs.yoctoproject.org/ref-manual/variables.html?highlight=workdir#term-S
 	# See example at https://github.com/cu-ecen-aeld/ecen5013-yocto/blob/ecen5013-hello-world/meta-ecen5013/recipes-ecen5013/ecen5013-hello-world/ecen5013-hello-world_git.bb
-	inherit updte-rc.d
-    install -d ${D}${bindir}
+        install -d ${D}${bindir}
     install -m 0755 ${S}/aesdsocket ${D}${bindir}/
 
     # Install your init script into /etc/init.d
