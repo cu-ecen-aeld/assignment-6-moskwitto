@@ -22,9 +22,10 @@ S = "${WORKDIR}/git/server"
 FILES:${PN} += "${bindir}/aesdsocket"
 FILES:${PN} += "${sysconfdir}/init.d/aesdsocket-start-stop"
 
-
+inherit update-rc.d
 INITSCRIPT_PACKAGES = "${PN}"
 INITSCRIPT_NAME:${PN} = "aesdsocket-start-stop"
+INITSCRIPT_PARAMS:${PN} = "defaults 99"
 
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
