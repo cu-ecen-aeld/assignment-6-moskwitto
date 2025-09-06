@@ -1,3 +1,4 @@
+
 # See https://git.yoctoproject.org/poky/tree/meta/files/common-licenses
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
@@ -8,8 +9,7 @@ SRC_URI = "git://git@github.com/cu-ecen-aeld/assignments-3-and-later-moskwitto.g
 
 PV = "1.0+git${SRCPV}"
 # TODO: set to reference a specific commit hash in your assignment repo
-SRCREV = "71254893bbdcab8c73e987ecfbf466fddc745c48"
-
+SRCREV = "2c7c6b256887082d231a77645f43a03b72a7caeb"
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
 # https://docs.yoctoproject.org/ref-manual/variables.html?highlight=workdir#term-WORKDIR
@@ -20,7 +20,11 @@ S = "${WORKDIR}/git/server"
 # TODO: Add the aesdsocket application and any other files you need to install
 # See https://git.yoctoproject.org/poky/plain/meta/conf/bitbake.conf?h=kirkstone
 FILES:${PN} += "${bindir}/aesdsocket"
-FILES:${PN} += "${sysconfdir}/rcS.d/aesdsocket-start-stop"
+FILES:${PN} += "${sysconfdir}/init.d/aesdsocket-start-stop"
+
+
+INITSCRIPT_PACKAGES = "${PN}"
+INITSCRIPT_NAME:${PN} = "aesdsocket-start-stop"
 
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
@@ -34,7 +38,8 @@ EXTRA_OEMAKE = "CC='${CC}' CFLAGS='${TARGET_LDFLAGS}'"
 
 
 do_compile () {
-	oe_runmake
+	#oe_runmake
+	${CC} ${CFLAGS} ${LDFLAGS} -o aesdsocket aesdsocket.c -lpthread
 }
 
 do_install () {
@@ -50,5 +55,5 @@ do_install () {
 
     # Install your init script into /etc/init.d
     install -d ${D}${sysconfdir}/init.d
-    install -m 0755 ${S}/aesdsocket-start-stop ${D}${sysconfdir}/init.d/
+    install -m 0755 ${S}/aesdsocket-start-stop ${D}${sysconfdir}/init.d/aesdsocket-start-stop
 }
